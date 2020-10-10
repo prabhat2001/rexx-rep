@@ -1,0 +1,91 @@
+ ****** ***************************** Top of Data ******************************
+ 000100 /* rexx */                                                              
+ 000200 say 'Hello I am user' userid()                                          
+ 000210 say '-------------------------------'                                   
+ 000300 say 'Todays system Date is ' date()                                     
+ 000310 say '-------------------------------'                                   
+ 000400 say 'Todays system Time is ' time()                                     
+ 000401 say '-------------------------------'                                   
+ 000410 say 'More system information written in Z00008.CH15.OUTPUT(#15) member' 
+ 000420 say '-------------------------------'                                   
+ 000430 say 'Check ch15.output(#15)'                                            
+ 000440 say '-------------------------------'                                   
+ 000500 /* ---------------- */                                                  
+ 000600 "allocate dataset(ch15.output(#15)) file(msgout) shr reuse"             
+ 000700 "execio 0 diskw msgout (stem msg. open"                                 
+ 001300    u = userid()                                                         
+ 001400    d = date()                                                           
+ 001500    t = time()                                                           
+ 001600    msg.1 = u d t                                                        
+ 001700 /* ---------------- */                                                  
+ 001800 "execio * diskw msgout (stem msg. "                                     
+ 001900 rc=isfcalls('ON')                                                       
+ 002300 Address SDSF "ISFEXEC SYS"                                              
+ 002400 if rc<>0 then                                                           
+ 002500   Exit rc                                                               
+ 002800 fixedField = word(isfcols,1)                                            
+ 003100 do ix=1 to isfrows                                                      
+ 003400   do jx=1 to words(isfcols)                                             
+ 003500     col = word(isfcols,jx)                                              
+ 003600  /* Say "  Column" col"."ix "has the value:" value(col"."ix)  */        
+ 003700     Select                                                              
+ 004000      When col = SYSLEVEL  then call write_syslevel                      
+ 004100      When col = CPUPR     then call write_cpupr                         
+ 004800      When col = UIC       then call write_uic                           
+ 005300      When col = REALAFC   then call write_realafc                       
+ 006000      When col = STCNUM    then call write_stcnum                        
+ 006100      When col = TSUNUM    then call write_tsunum                        
+ 006200      When col = JOBNUM    then call write_jobnum                        
+ 008300      When col = CPC       then call write_cpc                           
+ 010600      Otherwise                 nop                                      
+ 010700   end                                                                   
+ 010800 end                                                                     
+ 010900 "free file(msgout)"                                                     
+ 011000 exit 0                                                                  
+ 011100 write_cpc:                                                              
+ 011200 /* say "IBM Z Mainframe type is " value(col"."ix) */                    
+ 011300    msg.1 = 'IBM Z Mainframe type is : ' value(col"."ix)                 
+ 011400    "execio 1 diskw msgout (stem msg.      "                             
+ 011500 return                                                                  
+ 011700 write_syslevel:                                                         
+ 011800 /* say "Operating System Level is " value(col"."ix)     */              
+ 011900    msg.1 = 'Operating System Level is : ' value(col"."ix)               
+ 012000    "execio 1 diskw msgout (stem msg.      "                             
+ 012200 return                                                                  
+ 012300 write_cpupr:                                                            
+ 012400 /* say "CPU percent busy for the system is " value(col"."ix) */         
+ 012500    msg.1 = 'CPU percent busy for the system is : ' value(col"."ix)      
+ 012600    "execio 1 diskw msgout (stem msg.      "                             
+ 012700 return                                                                  
+ 012800 write_uic:                                                              
+ 012900 /* say "High unreferenced interval count is " value(col"."ix) */        
+ 013000    msg.1 = 'High unreferenced interval count is :' value(col"."ix)      
+ 013100    "execio 1 diskw msgout (stem msg.      "                             
+ 013200 return                                                                  
+ 013300 write_realafc:                                                          
+ 013400 /* say "Real storage available frame count is " value(col"."ix) */      
+ 013500    msg.1 = 'Real storage available frame count is :' value(col"."ix)    
+ 013600    "execio 1 diskw msgout (stem msg.      "                             
+ 013700 return                                                                  
+ 013800 write_stcnum:                                                           
+ 013900 /* say "Number of active started tasks is " value(col"."ix) */          
+ 014000    msg.1 = 'Number of active started tasks is :' value(col"."ix)        
+ 014100    "execio 1 diskw msgout (stem msg.      "                             
+ 014200 return                                                                  
+ 014300 write_tsunum:                                                           
+ 014400 /* say "Number of active TSO users is " value(col"."ix) */              
+ 014500    msg.1 = 'Number of active TSO users is :' value(col"."ix)            
+ 014600    "execio 1 diskw msgout (stem msg.      "                             
+ 014700 return                                                                  
+ 014800 write_jobnum:                                                           
+ 014900 /* say "Number of active batch jobs is " value(col"."ix) */             
+ 015000    msg.1 = 'Number of active batch jobs is :' value(col"."ix)           
+ 015100    "execio 1 diskw msgout (stem msg.      "                             
+ 015200 return                                                                  
+ ****** **************************** Bottom of Data ****************************
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
