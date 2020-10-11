@@ -44,7 +44,7 @@
  000043 "free f(dd5)"                                                           
  000044 "free f(dd4)"                                                           
  000045 do i=1 to 22 by 1                                                       
- 000046 say b.i                                                                 
+ 000046 say b.i   /*displaying output from a loop*/                                                              
  000047 end                                                                     
  000048 exit                                                                    
  ****** **************************** Bottom of Data ****************************
