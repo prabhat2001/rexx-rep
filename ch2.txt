@@ -13,7 +13,7 @@
  000500 /* ---------------- */                                                  
  000600 "allocate dataset(ch15.output(#15)) file(msgout) shr reuse"             
  000700 "execio 0 diskw msgout (stem msg. open"                                 
- 001300    u = userid()                                                         
+ 001300    u = userid() /*storing userid in a new variable*/                                                         
  001400    d = date()                                                           
  001500    t = time()                                                           
  001600    msg.1 = u d t                                                        
