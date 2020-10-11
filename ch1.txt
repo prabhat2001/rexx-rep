@@ -35,7 +35,7 @@
  000034 parse var a.1 w7 w8 .                                                   
  000035 b.19= "Date is: " w7                                                    
  000036 b.20= "Time is: " w8                                                    
- 000037 b.21= 'The information displayed above from syslog for user'            
+ 000037 b.21= 'The information displayed above from syslog for user' /*displaying the info for users*/           
  000038 b.22= '-------------------------------------------------------------'   
  000039 /* address tso "alloc f(dd4) da('z00008.p3.output(#18)') old" */        
  000040 address tso "alloc f(dd4) da('z00008.p3.OUTPUT(#15)') old"              
