@@ -1,6 +1,6 @@
  ****** ***************************** Top of Data ******************************
  000001 /*rexx*/                                                                
- 000002 b.1=hello                                                               
+ 000002 b.1=hello /*start of our code*/                                                              
  000003 b.2= 'Hello students! Its time to get to know this mainframe.....'      
  000004 b.3= ' -------------------------------------------------------------'   
  000005 b.4= 'The report was created by user:'userid()                          
