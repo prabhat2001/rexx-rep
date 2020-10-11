@@ -9,7 +9,7 @@
  000008 b.6= 'This is a Syslog Parsing report'                                  
  000009 b.7= ' -------------------------------------------------------------'   
  000010 b.8= 'The location of this report is :'                                 
- 000011 parse source a                                                          
+ 000011 parse source a /* getting a source*/                                                          
  000012 b.9= a                                                                  
  000013 /* version of rexx*/                                                    
  000014 b.10= ' -------------------------------------------------------------'  
